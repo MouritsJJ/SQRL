@@ -1,7 +1,8 @@
-import math
-import random
+from matplotlib import image
 import numpy as np
 from PIL import Image
+
+from tqdm import tqdm
 
 import torch
 import torch.utils.data as data
@@ -10,19 +11,29 @@ import torchvision.transforms as transforms
 
 from constants import *
 
-def rotate(img, r_min, r_max):
-    pic = img.rotate(random.randint(r_min, r_max))
+def rotate(X, angle_min, angle_max, grey=False):
+    (H, W) = X.shape[1:3]
+    xpad, pad = add_padding(X, H, grey)
+    xrot = []
+    for x in tqdm(xpad):
+        xrot.append(rotate_img(x, angle_min, angle_max))
+    return remove_padding(np.array(xrot), H, W, pad, grey)
 
-    (H, W, C) = np.array(img).shape
-    pad = math.sqrt(math.pow(H // 2, 2) + math.pow(W // 2, 2))
-    pad = (int)(2 * pad - H) // 2 + 1
+def add_padding(X, H, grey):
+    # Assuming X is squared
+    pad = H / 2 * 2**0.5 * 2
+    pad = int(np.ceil((pad - H) / 2))
 
-    pic = np.pad(np.array(img), ((pad, pad), (pad, pad), (0, 0)), mode='reflect')
-    pic = Image.fromarray(pic).rotate(32)
-    pic = np.array(pic)[pad:H+pad, pad:W+pad]
-    pic = Image.fromarray(pic)
+    paddings = ((0, 0), (pad, pad), (pad, pad)) if grey else ((0, 0), (pad, pad), (pad, pad), (0, 0))
 
-    return pic
+    return np.pad(X, paddings, mode='symmetric'), pad
+
+def remove_padding(X, H, W, pad, grey):
+    return X[:, pad:H+pad, pad:W+pad] if grey else X[:, :, pad:H+pad, pad:W+pad]
+
+def rotate_img(X, r_min, r_max):
+    angle = np.random.randint(r_min, r_max)
+    return np.array(Image.fromarray((X*255).astype(np.uint8)).rotate(angle)).astype(np.float32)/255
 
 def validation(model, device, criterion, data_validation, p=True):
     model.eval()
@@ -44,16 +55,7 @@ def validation(model, device, criterion, data_validation, p=True):
         print('Validation Loss: {:.6f} Accuracy: {}/{} ({})'.format( validation_loss, correct, num_data, accuracy))
     return validation_loss, accuracy
 
-def load_data(location):
-    trans = []
-    if gray: trans += [transforms.Grayscale()]
-    if resize: trans += [transforms.Resize(image_size)]
-    if pad: trans += [transforms.Pad(padding)]
-    trans += [transforms.ToTensor()]
-    if gray: trans += [transforms.Normalize(*stats_gray)]
-    else: trans += [transforms.Normalize(*stats_rgb)]
-    dataset = dset.ImageFolder(root=location, 
-                                transform=transforms.Compose(trans
-                                ))
-
-    return data.DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers, drop_last=True)
+def load_data(x_location, y_location, device, shuffle):
+    x, y = np.load(x_location), np.load(y_location)
+    dataset = torch.utils.data.TensorDataset(torch.tensor(x).to(device), torch.tensor(y.ravel()).to(device))
+    return torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)

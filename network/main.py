@@ -50,38 +50,11 @@ def train(model, device, criterion, optimizer, lr_scheduler, data_training, data
 def main(model_name):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-    X_train, y_train = np.load('../../circle/new_X_train.npy'), np.load('../../circle/y_train.npy')
-    X_test, y_test = np.load('../../circle/new_X_test.npy'), np.load('../../circle/y_test.npy')
-    X_test_45, y_test_45 = np.load('../../circle/new_X_test_45.npy'), np.load('../../circle/y_test.npy')
-    X_test_90, y_test_90 = np.load('../../circle/new_X_test_90.npy'), np.load('../../circle/y_test.npy')
-
-    X_train = np.transpose(X_train, axes=(0,3,1,2))
-    X_test = np.transpose(X_test, axes=(0,3,1,2))
-    X_test_45 = np.transpose(X_test_45, axes=(0,3,1,2))
-    X_test_90 = np.transpose(X_test_90, axes=(0,3,1,2))
-
-
-    p_train = torch.utils.data.TensorDataset(torch.tensor(X_train).to(device), torch.tensor(y_train.ravel()).to(device))
-    data_training = torch.utils.data.DataLoader(p_train, batch_size=batch_size, shuffle=True)
-
-    p_test = torch.utils.data.TensorDataset(torch.tensor(X_test).to(device), torch.tensor(y_test.ravel()).to(device))
-    data_validation = torch.utils.data.DataLoader(p_test, batch_size=batch_size, shuffle=False)
-
-    p_test_45 = torch.utils.data.TensorDataset(torch.tensor(X_test_45).to(device), torch.tensor(y_test.ravel()).to(device))
-    data_testing_45 = torch.utils.data.DataLoader(p_test_45, batch_size=batch_size, shuffle=False)
-
-    p_test_90 = torch.utils.data.TensorDataset(torch.tensor(X_test_90).to(device), torch.tensor(y_test.ravel()).to(device))
-    data_testing_90 = torch.utils.data.DataLoader(p_test_90, batch_size=batch_size, shuffle=False)
-
-    p_test_90 = torch.utils.data.TensorDataset(torch.tensor(X_test_90).to(device), torch.tensor(y_test.ravel()).to(device))
-    data_testing_360 = torch.utils.data.DataLoader(p_test_90, batch_size=batch_size, shuffle=False)
-
-
-    # data_training = load_data(p_train)
-    # data_validation = load_data(p_test)
-    # data_testing_45 = load_data(p_test_45)
-    # data_testing_90 = load_data(p_test_90)
-    # data_testing_360 = load_data(p_test_360)
+    data_training = load_data(p_train)
+    data_validation = load_data(p_test)
+    data_testing_45 = load_data(p_test_45)
+    data_testing_90 = load_data(p_test_90)
+    data_testing_360 = load_data(p_test_360)
    
     model = get_model(model_name)
     model.to(device)

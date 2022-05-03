@@ -56,9 +56,6 @@ num_classes = 10
 # Boolean to determine if weights should be initialises
 init_weights = True
 
-# Number of epochs
-num_epochs = 20
-
 # Momentum for optimizer
 momentum = 0.9
 
@@ -82,13 +79,6 @@ min_lr = 1e-6
 
 # Patience for training
 train_patience = 5
-
-# Contant for Padding
-pad = False
-
-# Constant for normalising
-stats_rgb = (0.5,0.5,0.5), (0.5,0.5,0.5)    # mean-vector, std-vector
-stats_gray = (0.5), (0.5)                   # mean-vector, std-vector
 
 # linear constant
 linear = 512
