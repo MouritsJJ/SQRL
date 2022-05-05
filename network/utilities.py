@@ -27,7 +27,7 @@ def remove_padding(X, H, W, pad):
 
 def rotate_img(X, r_min, r_max):
     angle = np.random.randint(r_min, r_max)
-    return np.array(Image.fromarray((X*255).astype(np.uint8)).rotate(angle)).astype(np.float32)/255
+    return np.array(Image.fromarray((X*255.).astype(np.uint8)).rotate(angle)).astype(np.float32)/255.
 
 def validation(model, device, criterion, data_validation, p=True):
     model.eval()

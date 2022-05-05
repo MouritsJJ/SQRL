@@ -1,7 +1,6 @@
 import torch
 import cv2
 import numpy as np
-from PIL import Image
 
 class Polar(torch.nn.Module):
     def __init__(self):

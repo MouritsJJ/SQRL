@@ -61,7 +61,7 @@ def make_layers(cfg):
 
 
 cfgs = {
-    "sqrl":  [16, 32, 64, "max"],
+    "sqrl":  [64, 64, "M", 128, 128, "M", "max"],
     "polar": ["P", 64, 64, "M", 128, 128, "M", "max"],
 }
 
