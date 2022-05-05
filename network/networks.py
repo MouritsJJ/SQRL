@@ -52,7 +52,7 @@ def make_layers(cfg):
         elif v == "P":
             layers += [Polar()]
         elif v == "max":
-            layers += [Max(v)]
+            layers += [Max()]
         else:
             conv2d = nn.Conv2d(in_channels, v, kernel_size=(3,3), stride=(1,1), padding=1)
             layers += [conv2d, nn.ReLU(inplace=True)]
