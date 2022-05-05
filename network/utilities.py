@@ -5,25 +5,25 @@ from tqdm import tqdm
 
 from constants import *
 
-def rotate(X, angle_min, angle_max, grey=False):
+def rotate(X, angle_min, angle_max):
     (H, W) = X.shape[1:3]
-    xpad, pad = add_padding(X, H, grey)
+    xpad, pad = add_padding(X, H)
     xrot = []
     for x in tqdm(xpad):
         xrot.append(rotate_img(x, angle_min, angle_max))
-    return remove_padding(np.array(xrot), H, W, pad, grey)
+    return remove_padding(np.array(xrot), H, W, pad)
 
-def add_padding(X, H, grey):
+def add_padding(X, H):
     # Assuming X is squared
     pad = H / 2 * 2**0.5 * 2
     pad = int(np.ceil((pad - H) / 2))
 
-    paddings = ((0, 0), (pad, pad), (pad, pad)) if grey else ((0, 0), (pad, pad), (pad, pad), (0, 0))
+    paddings = ((0, 0), (pad, pad), (pad, pad)) if len(X.shape) == 3 else ((0, 0), (pad, pad), (pad, pad), (0, 0))
 
     return np.pad(X, paddings, mode='symmetric'), pad
 
-def remove_padding(X, H, W, pad, grey):
-    return X[:, pad:H+pad, pad:W+pad] if grey else X[:, :, pad:H+pad, pad:W+pad]
+def remove_padding(X, H, W, pad):
+    return X[:, pad:H+pad, pad:W+pad]
 
 def rotate_img(X, r_min, r_max):
     angle = np.random.randint(r_min, r_max)
