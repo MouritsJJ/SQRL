@@ -8,7 +8,7 @@ class Polar(torch.nn.Module):
     
     def forward(self, x):
         with torch.no_grad():
-            return polar(x)
+            return self.polar(x)
             
     def polar(self, img):
         B, C, H, W = img.shape

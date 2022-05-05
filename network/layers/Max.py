@@ -1,7 +1,7 @@
 import torch
 
 class Max(torch.nn.Module):
-    def __init__(self, agg):
+    def __init__(self):
         super(Max, self).__init__()
     
     def forward(self, x):

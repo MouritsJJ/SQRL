@@ -7,7 +7,7 @@ class SqRL(torch.nn.Module):
     
     def forward(self, x):
         with torch.no_grad():
-            return SquareRotationalLayer(x)
+            return self.SquareRotationalLayer(x)
     
     # Square ratotation that keeps correlation in corners
     # Uses reflection in the end
