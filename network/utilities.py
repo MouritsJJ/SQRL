@@ -50,6 +50,6 @@ def validation(model, device, criterion, data_validation, p=True):
     return validation_loss, accuracy
 
 def load_data(x_location, y_location, device, shuffle):
-    x, y = np.load(x_location), np.load(y_location)
-    dataset = torch.utils.data.TensorDataset(torch.tensor(x).to(device), torch.tensor(y.ravel()).to(device))
+    x, y = np.load(x_location).transpose(0, 3, 1, 2), np.load(y_location)
+    dataset = torch.utils.data.TensorDataset(torch.tensor(x).to(device), torch.LongTensor(y.ravel()).to(device))
     return torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
