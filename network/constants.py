@@ -3,97 +3,97 @@ dataset_paths = {
     # Root of the folder containing the CIFAR images
     'CIFAR-10': 
     [
-        'data/cifar-10/train_x',
-        'data/cifar-10/train_y',
-        'data/cifar-10/test_x',
-        'data/cifar-10/test_y',
-        'data/cifar-10/test_x_45',
-        'data/cifar-10/test_x_90',
-        'data/cifar-10/test_x_360'
+        'data/cifar-10/train_x.npy',
+        'data/cifar-10/train_y.npy',
+        'data/cifar-10/test_x.npy',
+        'data/cifar-10/test_y.npy',
+        'data/cifar-10/test_x_45.npy',
+        'data/cifar-10/test_x_90.npy',
+        'data/cifar-10/test_x_360.npy'
     ],
 
     # Root of the folder containing the MNIST images
     'MNIST':
     [
-        'data/mnist/train_x',
-        'data/mnist/train_y',
-        'data/mnist/test_x',
-        'data/mnist/test_y',
-        'data/mnist/test_x_45',
-        'data/mnist/test_x_90',
-        'data/mnist/test_x_360'
+        'data/mnist/train_x.npy',
+        'data/mnist/train_y.npy',
+        'data/mnist/test_x.npy',
+        'data/mnist/test_y.npy',
+        'data/mnist/test_x_45.npy',
+        'data/mnist/test_x_90.npy',
+        'data/mnist/test_x_360.npy'
     ],
 
     # Root of the folder containing the Fashion MNIST images
     'FMNIST':
     [
-        'data/fmnist/train_x',
-        'data/fmnist/train_y',
-        'data/fmnist/test_x',
-        'data/fmnist/test_y',
-        'data/fmnist/test_x_45',
-        'data/fmnist/test_x_90',
-        'data/fmnist/test_x_360'
+        'data/fmnist/train_x.npy',
+        'data/fmnist/train_y.npy',
+        'data/fmnist/test_x.npy',
+        'data/fmnist/test_y.npy',
+        'data/fmnist/test_x_45.npy',
+        'data/fmnist/test_x_90.npy',
+        'data/fmnist/test_x_360.npy'
     ],
 
     # Root of the folder containing the SVHN images
     'SVHN':
     [
-        'data/svhn/train_x',
-        'data/svhn/train_y',
-        'data/svhn/test_x',
-        'data/svhn/test_y',
-        'data/svhn/test_x_45',
-        'data/svhn/test_x_90',
-        'data/svhn/test_x_360'
+        'data/svhn/train_x.npy',
+        'data/svhn/train_y.npy',
+        'data/svhn/test_x.npy',
+        'data/svhn/test_y.npy',
+        'data/svhn/test_x_45.npy',
+        'data/svhn/test_x_90.npy',
+        'data/svhn/test_x_360.npy'
     ],
 
     # Root of the folder containing the CIFAR images
     'CIFAR-10-SQRL': 
     [
-        'data/cifar-10/sqrl_train_x',
-        'data/cifar-10/train_y',
-        'data/cifar-10/sqrl_test_x',
-        'data/cifar-10/test_y',
-        'data/cifar-10/sqrl_test_x_45',
-        'data/cifar-10/sqrl_test_x_90',
-        'data/cifar-10/sqrl_test_x_360'
+        'data/cifar-10/sqrl_train_x.npy',
+        'data/cifar-10/train_y.npy',
+        'data/cifar-10/sqrl_test_x.npy',
+        'data/cifar-10/test_y.npy',
+        'data/cifar-10/sqrl_test_x_45.npy',
+        'data/cifar-10/sqrl_test_x_90.npy',
+        'data/cifar-10/sqrl_test_x_360.npy'
     ],
 
     # Root of the folder containing the MNIST images
     'MNIST-SQRL':
     [
-        'data/mnist/sqrl_train_x',
-        'data/mnist/train_y',
-        'data/mnist/sqrl_test_x',
-        'data/mnist/test_y',
-        'data/mnist/sqrl_test_x_45',
-        'data/mnist/sqrl_test_x_90',
-        'data/mnist/sqrl_test_x_360'
+        'data/mnist/sqrl_train_x.npy',
+        'data/mnist/train_y.npy',
+        'data/mnist/sqrl_test_x.npy',
+        'data/mnist/test_y.npy',
+        'data/mnist/sqrl_test_x_45.npy',
+        'data/mnist/sqrl_test_x_90.npy',
+        'data/mnist/sqrl_test_x_360.npy'
     ],
 
     # Root of the folder containing the Fashion MNIST images
     'FMNIST-SQRL':
     [
-        'data/fmnist/sqrl_train_x',
-        'data/fmnist/train_y',
-        'data/fmnist/sqrl_test_x',
-        'data/fmnist/test_y',
-        'data/fmnist/sqrl_test_x_45',
-        'data/fmnist/sqrl_test_x_90',
-        'data/fmnist/sqrl_test_x_360'
+        'data/fmnist/sqrl_train_x.npy',
+        'data/fmnist/train_y.npy',
+        'data/fmnist/sqrl_test_x.npy',
+        'data/fmnist/test_y.npy',
+        'data/fmnist/sqrl_test_x_45.npy',
+        'data/fmnist/sqrl_test_x_90.npy',
+        'data/fmnist/sqrl_test_x_360.npy'
     ],
 
     # Root of the folder containing the SVHN images
     'SVHN-SQRL':
     [
-        'data/svhn/sqrl_train_x',
-        'data/svhn/train_y',
-        'data/svhn/sqrl_test_x',
-        'data/svhn/test_y',
-        'data/svhn/sqrl_test_x_45',
-        'data/svhn/sqrl_test_x_90',
-        'data/svhn/sqrl_test_x_360'
+        'data/svhn/sqrl_train_x.npy',
+        'data/svhn/train_y.npy',
+        'data/svhn/sqrl_test_x.npy',
+        'data/svhn/test_y.npy',
+        'data/svhn/sqrl_test_x_45.npy',
+        'data/svhn/sqrl_test_x_90.npy',
+        'data/svhn/sqrl_test_x_360.npy'
     ]
 }
 
