@@ -54,7 +54,7 @@ def make_layers(cfg):
         elif v == "max":
             layers += [Max(v)]
         else:
-            conv2d = nn.Conv2d(in_channels, v, kernel_size=(3,5), stride=(1,2))
+            conv2d = nn.Conv2d(in_channels, v, kernel_size=(3,5), stride=(1,2), padding=0)
             layers += [conv2d, nn.ReLU(inplace=True)]
             in_channels = v
     return nn.Sequential(*layers)

@@ -1,6 +1,6 @@
 # Custom files
 .DS_Store
-circle/
+data/
 .vscode/
 
 # Byte-compiled / optimized / DLL files

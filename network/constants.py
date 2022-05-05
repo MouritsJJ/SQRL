@@ -3,41 +3,97 @@ dataset_paths = {
     # Root of the folder containing the CIFAR images
     'CIFAR-10': 
     [
-        'C:/Users/p5aau/Desktop/CIFAR-10 Rot Datasets/train',
-        'C:/Users/p5aau/Desktop/CIFAR-10 Rot Datasets/test',
-        'C:/Users/p5aau/Desktop/CIFAR-10 Rot Datasets/CIFAR-10-45',
-        'C:/Users/p5aau/Desktop/CIFAR-10 Rot Datasets/CIFAR-10-90',
-        'C:/Users/p5aau/Desktop/CIFAR-10 Rot Datasets/CIFAR-10-360'
+        'data/cifar-10/train_x',
+        'data/cifar-10/train_y',
+        'data/cifar-10/test_x',
+        'data/cifar-10/test_y',
+        'data/cifar-10/test_x_45',
+        'data/cifar-10/test_x_90',
+        'data/cifar-10/test_x_360'
     ],
 
     # Root of the folder containing the MNIST images
     'MNIST':
     [
-        'C:/Users/p5aau/Desktop/MNIST Rot Datasets/train',
-        'C:/Users/p5aau/Desktop/MNIST Rot Datasets/test',
-        'C:/Users/p5aau/Desktop/MNIST Rot Datasets/MNIST-45',
-        'C:/Users/p5aau/Desktop/MNIST Rot Datasets/MNIST-90',
-        'C:/Users/p5aau/Desktop/MNIST Rot Datasets/MNIST-360'
+        'data/mnist/train_x',
+        'data/mnist/train_y',
+        'data/mnist/test_x',
+        'data/mnist/test_y',
+        'data/mnist/test_x_45',
+        'data/mnist/test_x_90',
+        'data/mnist/test_x_360'
     ],
 
     # Root of the folder containing the Fashion MNIST images
     'FMNIST':
     [
-        'C:/Users/p5aau/Desktop/FMNIST Rot Datasets/train',
-        'C:/Users/p5aau/Desktop/FMNIST Rot Datasets/test',
-        'C:/Users/p5aau/Desktop/FMNIST Rot Datasets/FMNIST-45',
-        'C:/Users/p5aau/Desktop/FMNIST Rot Datasets/FMNIST-90',
-        'C:/Users/p5aau/Desktop/FMNIST Rot Datasets/FMNIST-360'
+        'data/fmnist/train_x',
+        'data/fmnist/train_y',
+        'data/fmnist/test_x',
+        'data/fmnist/test_y',
+        'data/fmnist/test_x_45',
+        'data/fmnist/test_x_90',
+        'data/fmnist/test_x_360'
     ],
 
     # Root of the folder containing the SVHN images
     'SVHN':
     [
-        'C:/Users/p5aau/Desktop/SVHN Rot Datasets/train',
-        'C:/Users/p5aau/Desktop/SVHN Rot Datasets/test',
-        'C:/Users/p5aau/Desktop/SVHN Rot Datasets/SVHN-45',
-        'C:/Users/p5aau/Desktop/SVHN Rot Datasets/SVHN-90',
-        'C:/Users/p5aau/Desktop/SVHN Rot Datasets/SVHN-360'
+        'data/svhn/train_x',
+        'data/svhn/train_y',
+        'data/svhn/test_x',
+        'data/svhn/test_y',
+        'data/svhn/test_x_45',
+        'data/svhn/test_x_90',
+        'data/svhn/test_x_360'
+    ],
+
+    # Root of the folder containing the CIFAR images
+    'CIFAR-10-SQRL': 
+    [
+        'data/cifar-10/sqrl_train_x',
+        'data/cifar-10/train_y',
+        'data/cifar-10/sqrl_test_x',
+        'data/cifar-10/test_y',
+        'data/cifar-10/sqrl_test_x_45',
+        'data/cifar-10/sqrl_test_x_90',
+        'data/cifar-10/sqrl_test_x_360'
+    ],
+
+    # Root of the folder containing the MNIST images
+    'MNIST-SQRL':
+    [
+        'data/mnist/sqrl_train_x',
+        'data/mnist/train_y',
+        'data/mnist/sqrl_test_x',
+        'data/mnist/test_y',
+        'data/mnist/sqrl_test_x_45',
+        'data/mnist/sqrl_test_x_90',
+        'data/mnist/sqrl_test_x_360'
+    ],
+
+    # Root of the folder containing the Fashion MNIST images
+    'FMNIST-SQRL':
+    [
+        'data/fmnist/sqrl_train_x',
+        'data/fmnist/train_y',
+        'data/fmnist/sqrl_test_x',
+        'data/fmnist/test_y',
+        'data/fmnist/sqrl_test_x_45',
+        'data/fmnist/sqrl_test_x_90',
+        'data/fmnist/sqrl_test_x_360'
+    ],
+
+    # Root of the folder containing the SVHN images
+    'SVHN-SQRL':
+    [
+        'data/svhn/sqrl_train_x',
+        'data/svhn/train_y',
+        'data/svhn/sqrl_test_x',
+        'data/svhn/test_y',
+        'data/svhn/sqrl_test_x_45',
+        'data/svhn/sqrl_test_x_90',
+        'data/svhn/sqrl_test_x_360'
     ]
 }
 

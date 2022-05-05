@@ -1,13 +1,7 @@
-from matplotlib import image
 import numpy as np
-from PIL import Image
-
-from tqdm import tqdm
-
 import torch
-import torch.utils.data as data
-import torchvision.datasets as dset
-import torchvision.transforms as transforms
+from PIL import Image
+from tqdm import tqdm
 
 from constants import *
 

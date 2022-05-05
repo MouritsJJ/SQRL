@@ -50,11 +50,11 @@ def train(model, device, criterion, optimizer, lr_scheduler, data_training, data
 def main(model_name):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-    data_training = load_data(p_train)
-    data_validation = load_data(p_test)
-    data_testing_45 = load_data(p_test_45)
-    data_testing_90 = load_data(p_test_90)
-    data_testing_360 = load_data(p_test_360)
+    data_training = load_data(p_train_x, p_train_y, device=device, shuffle=True)
+    data_validation = load_data(p_test_x, p_test_y, device=device, shuffle=False)
+    data_testing_45 = load_data(p_test_45, p_test_y, device=device, shuffle=False)
+    data_testing_90 = load_data(p_test_90, p_test_y, device=device, shuffle=False)
+    data_testing_360 = load_data(p_test_360, p_test_y, device=device, shuffle=False)
    
     model = get_model(model_name)
     model.to(device)
@@ -66,9 +66,9 @@ def main(model_name):
     test_loss_45, test_acc_45 = validation(model, device, criterion, data_testing_45, False)
     test_loss_90, test_acc_90 = validation(model, device, criterion, data_testing_90, False)
     test_loss_360, test_acc_360 = validation(model, device, criterion, data_testing_360, False)
-    print(f'Test45 loss: {test_loss_45:.6f}, Test acc: {test_acc_45:.3f}')
-    print(f'Test90 loss: {test_loss_90:.6f}, Test45 acc: {test_acc_90:.3f}')
-    print(f'Test360 loss: {test_loss_360:.6f}, Test90 acc: {test_acc_360:.3f}')
+    print(f'Test45 loss: {test_loss_45:.6f}, Test45 acc: {test_acc_45:.3f}')
+    print(f'Test90 loss: {test_loss_90:.6f}, Test90 acc: {test_acc_90:.3f}')
+    print(f'Test360 loss: {test_loss_360:.6f}, Test360 acc: {test_acc_360:.3f}')
     return validation_acc, test_acc_45, test_acc_90, test_acc_360
 
 if __name__ == '__main__':
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     if args['dset'] not in dataset_paths:
         print('Invalid dataset')
         exit()
-    p_train, p_test, p_test_45, p_test_90, p_test_360 = dataset_paths[args['dset']]
+    p_train_x, p_train_y, p_test_x, p_test_y, p_test_45, p_test_90, p_test_360 = dataset_paths[args['dset']]
 
     f = open(f"{args['model']}.csv", 'w')
     f.write(f'Validation;-45,45;-90,90;0,360\n')
