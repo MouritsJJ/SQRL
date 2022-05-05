@@ -17,7 +17,7 @@ class Networks(nn.Module):
         super().__init__()
         self.features = features
         self.classifier = nn.Sequential(
-            nn.Linear(640, 512),
+            nn.Linear(linear, 512),
             nn.ReLU(True),
             nn.Linear(512, num_classes)
         )

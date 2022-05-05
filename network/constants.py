@@ -125,7 +125,7 @@ weight_decay = 1e-5
 factor = 0.2
 
 # Patience for learning rate scheduler
-patience = 2
+patience = 3
 
 # Cooldown for learning rate scheduler
 cooldown = 0
@@ -134,7 +134,7 @@ cooldown = 0
 min_lr = 1e-6
 
 # Patience for training
-train_patience = 5
+train_patience = 10
 
 # linear constant
-linear = 512
+linear = 640
