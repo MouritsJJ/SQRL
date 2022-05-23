@@ -10,8 +10,7 @@ from layers.polar import *
 from layers.Max import *
 from constants import *
 
-#Dropout - https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html
-
+# Network model
 class Networks(nn.Module):
     def __init__(self, features, num_classes, init_weights):
         super().__init__()
@@ -40,7 +39,7 @@ class Networks(nn.Module):
         x = self.classifier(x)
         return x
 
-
+# Method that creates a neural network based on a configuration
 def make_layers(cfg):
     layers = []
     in_channels = image_channels
@@ -59,13 +58,13 @@ def make_layers(cfg):
             in_channels = v
     return nn.Sequential(*layers)
 
-
+# Neural network configurations
 cfgs = {
     "sqrl":  [64, 64, "M", 128, 128, "M", "max"],
     "polar": ["P", 64, 64, "M", 128, 128, "M", "max"],
 }
 
-
+# Methods for loading the correct configuration based on the name of the model
 def sqrl(**kwargs):
     return Networks(make_layers(cfgs['sqrl']), **kwargs)
 

@@ -1,6 +1,10 @@
 import torch
 import numpy as np
 
+'''
+    A class for transforming an image into a SquareRotational structure
+    The SquareRotationalLayer method assumes a pytorch structure of the batch (BatchSize, Channels, Height, Width)
+'''
 class SqRL(torch.nn.Module):
     def __init__(self):
         super(SqRL, self).__init__()

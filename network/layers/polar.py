@@ -2,6 +2,11 @@ import torch
 import cv2
 import numpy as np
 
+'''
+    A class for transforming a batch of images into polar representation
+    The polar method assumes a pytorch structure of the batch (BatchSize, Channels, Height, Width)
+    The polar implementation is inspired from https://arxiv.org/pdf/2007.10588.pdf (Accessed 23/05-2022)
+'''
 class Polar(torch.nn.Module):
     def __init__(self):
         super(Polar, self).__init__()

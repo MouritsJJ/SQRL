@@ -1,10 +1,10 @@
 import argparse
 from numpy import Infinity
-
 from utilities import *
 from constants import *
 from networks import *
 
+# Method to create models based on the name
 def get_model(string):
     if string == 'sqrl':
         return sqrl(num_classes=num_classes, init_weights=init_weights)
@@ -14,6 +14,7 @@ def get_model(string):
         print(f'Model {string} not found. Exiting...')
         exit()
 
+# Method to train a model
 def train(model, device, criterion, optimizer, lr_scheduler, data_training, data_validation):
     model.train()
     epoch, best_epoch, best_loss, best_acc = 0, 0, Infinity, 0
@@ -47,6 +48,15 @@ def train(model, device, criterion, optimizer, lr_scheduler, data_training, data
     model.load_state_dict(best_model.state_dict())
     return best_acc
 
+'''
+    Main:
+    * Detect device
+    * Load data sets
+    * Create model
+    * Create optimizer, loss function and lr_scheduler
+    * Train the model
+    * Run validation on several transformed data sets
+'''
 def main(model_name):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
@@ -62,15 +72,19 @@ def main(model_name):
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay)
     lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', factor=factor, patience=patience, cooldown=cooldown, min_lr=min_lr)
+    
     validation_acc = train(model, device, criterion, optimizer, lr_scheduler, data_training, data_validation)
     test_loss_45, test_acc_45 = validation(model, device, criterion, data_testing_45, False)
     test_loss_90, test_acc_90 = validation(model, device, criterion, data_testing_90, False)
     test_loss_360, test_acc_360 = validation(model, device, criterion, data_testing_360, False)
+
     print(f'Test45 loss: {test_loss_45:.6f}, Test45 acc: {test_acc_45:.3f}')
     print(f'Test90 loss: {test_loss_90:.6f}, Test90 acc: {test_acc_90:.3f}')
     print(f'Test360 loss: {test_loss_360:.6f}, Test360 acc: {test_acc_360:.3f}')
+    
     return validation_acc, test_acc_45, test_acc_90, test_acc_360
 
+# Input arguments are passed and a csv with results are created
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('-m','--model', type=str, help='Choose model to train', required=True)

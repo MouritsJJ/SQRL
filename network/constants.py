@@ -109,7 +109,7 @@ num_workers = 4
 # Numbers of classes to classify
 num_classes = 10
 
-# Boolean to determine if weights should be initialises
+# Boolean to determine if weights should be initialised
 init_weights = True
 
 # Momentum for optimizer
@@ -136,5 +136,5 @@ min_lr = 1e-6
 # Patience for training
 train_patience = 10
 
-# linear constant
+# Linear constant
 linear = 640

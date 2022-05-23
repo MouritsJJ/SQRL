@@ -2,9 +2,9 @@ import numpy as np
 import torch
 from PIL import Image
 from tqdm import tqdm
-
 from constants import *
 
+# Rotates each image in a batch randomly between angle_min and angle_max
 def rotate(X, angle_min, angle_max):
     (H, W) = X.shape[1:3]
     xpad, pad = add_padding(X, H)
@@ -13,6 +13,15 @@ def rotate(X, angle_min, angle_max):
         xrot.append(rotate_img(x, angle_min, angle_max))
     return remove_padding(np.array(xrot), H, W, pad)
 
+'''
+    Randomly chooses an angle between r_min and r_max
+    Rotates the image this angle around the center
+'''
+def rotate_img(X, r_min, r_max):
+    angle = np.random.randint(r_min, r_max)
+    return np.array(Image.fromarray((X*255.).astype(np.uint8)).rotate(angle)).astype(np.float32)/255.
+
+# Adds padding to a batch of images - using symmetric padding
 def add_padding(X, H):
     # Assuming X is squared
     pad = H / 2 * 2**0.5 * 2
@@ -22,13 +31,14 @@ def add_padding(X, H):
 
     return np.pad(X, paddings, mode='symmetric'), pad
 
+# Removes padding from a batch of images
 def remove_padding(X, H, W, pad):
     return X[:, pad:H+pad, pad:W+pad]
 
-def rotate_img(X, r_min, r_max):
-    angle = np.random.randint(r_min, r_max)
-    return np.array(Image.fromarray((X*255.).astype(np.uint8)).rotate(angle)).astype(np.float32)/255.
-
+'''
+    Validates a model using a data set
+    Outputs the validation loss and validation accuracy
+'''
 def validation(model, device, criterion, data_validation, p=True):
     model.eval()
     validation_loss, correct, num_data = 0, 0, 0
@@ -49,6 +59,8 @@ def validation(model, device, criterion, data_validation, p=True):
         print('Validation Loss: {:.6f} Accuracy: {}/{} ({})'.format( validation_loss, correct, num_data, accuracy))
     return validation_loss, accuracy
 
+
+# Loads the images and the corresponding labels 
 def load_data(x_location, y_location, device, shuffle):
     x, y = np.load(x_location).transpose(0, 3, 1, 2), np.load(y_location)
     dataset = torch.utils.data.TensorDataset(torch.tensor(x).to(device), torch.LongTensor(y.ravel()).to(device))
